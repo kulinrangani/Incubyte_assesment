@@ -3,6 +3,7 @@ public class StringCalculator {
     public int add(String String_value) {
         int sum = 0;
         String_value = String_value.replaceAll(" ", "");
+        String negative_String = "";
         if (String_value.equals("")) {
             return 0;
         }
@@ -15,9 +16,14 @@ public class StringCalculator {
                     int current = Integer.parseInt(n);
                     if (current > 1000) {
                         continue;
+                    } else if (current < 0) {
+                        negative_String += (String.valueOf(current) + " ");
                     }
                     sum += current;
                 }
+            }
+            if (negative_String != "") {
+                throw new RuntimeException("Negatives not allowed -> " + negative_String);
             }
             return sum;
         }

@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -44,5 +45,17 @@ public class StringCalculatorShould {
     @Test
     public void handleAlphabet() {
         assertEquals(7, sc.add("1,2,a,c"));
+    }
+
+    @Test
+    public void handleSingleNegativeNumber() {
+        RuntimeException e = assertThrows(RuntimeException.class, () -> sc.add("-1"));
+        assertEquals(e.getMessage(), "Negatives not allowed -> -1 ");
+    }
+
+    @Test
+    public void handleNegativeNumbers() {
+        RuntimeException e = assertThrows(RuntimeException.class, () -> sc.add("-1,2,-4"));
+        assertEquals(e.getMessage(), "Negatives not allowed -> -1 -4 ");
     }
 }
