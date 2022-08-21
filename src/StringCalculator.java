@@ -7,9 +7,12 @@ public class StringCalculator {
             return 0;
         }
         while (String_value.length() >= 1) {
-            String arr[] = String_value.split(",");
+            String arr[] = String_value.split("[,\n]");
             for (String n : arr) {
                 int current = Integer.parseInt(n);
+                if (current > 1000) {
+                    continue;
+                }
                 sum += current;
             }
             return sum;
