@@ -9,11 +9,15 @@ public class StringCalculator {
         while (String_value.length() >= 1) {
             String arr[] = String_value.split("[,\n]");
             for (String n : arr) {
-                int current = Integer.parseInt(n);
-                if (current > 1000) {
-                    continue;
+                if (n.matches("[a-z]")) {
+                    sum += n.codePointAt(0) - 96;
+                } else {
+                    int current = Integer.parseInt(n);
+                    if (current > 1000) {
+                        continue;
+                    }
+                    sum += current;
                 }
-                sum += current;
             }
             return sum;
         }

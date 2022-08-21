@@ -40,4 +40,9 @@ public class StringCalculatorShould {
     public void avoidMoreThanThousend() {
         assertEquals(2, sc.add("2,1002"));
     }
+
+    @Test
+    public void handleAlphabet() {
+        assertEquals(7, sc.add("1,2,a,c"));
+    }
 }
