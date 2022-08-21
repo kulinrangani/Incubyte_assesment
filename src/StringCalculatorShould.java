@@ -54,8 +54,18 @@ public class StringCalculatorShould {
     }
 
     @Test
-    public void handleNegativeNumbers() {
+    public void handleMulipleNegativeNumbers() {
         RuntimeException e = assertThrows(RuntimeException.class, () -> sc.add("-1,2,-4"));
         assertEquals(e.getMessage(), "Negatives not allowed -> -1 -4 ");
+    }
+
+    @Test
+    public void handelDelimiters() {
+        assertEquals(3, sc.add("//;\n1;2"));
+    }
+
+    @Test
+    public void handelCustomDelimiter() {
+        assertEquals(6, sc.add("//;;;\n1;;;2;;;3"));
     }
 }

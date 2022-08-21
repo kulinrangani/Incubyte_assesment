@@ -2,9 +2,25 @@ public class StringCalculator {
 
     public int add(String String_value) {
         int sum = 0;
-        String_value = String_value.replaceAll(" ", "");
         String negative_String = "";
-        if (String_value.equals("")) {
+        String_value = String_value.replaceAll(" ", "");
+
+        // Custom delimeter
+        int delimiter_Index = String_value.indexOf("//");
+        int String_Index = String_value.indexOf("\n");
+
+        if (delimiter_Index != -1) {
+            String delimiter = String_value.substring(delimiter_Index + 2, String_Index);
+            String_value = String_value.substring(String_Index + 1);
+            String[] arr1 = String_value.split(delimiter);
+            for (String n : arr1) {
+                Integer current = Integer.parseInt(n);
+                sum += current;
+            }
+            return sum;
+        }
+
+        else if (String_value.equals("")) {
             return 0;
         }
         while (String_value.length() >= 1) {
