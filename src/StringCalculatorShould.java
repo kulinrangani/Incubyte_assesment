@@ -16,4 +16,9 @@ public class StringCalculatorShould {
         assertEquals(0, sc.add(""));
     }
 
+    @Test
+    public void returnSumIfStringIsNotEmpty() {
+        assertEquals(12, sc.add("5,7"));
+    }
+
 }
