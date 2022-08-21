@@ -68,4 +68,16 @@ public class StringCalculatorShould {
     public void handelCustomDelimiter() {
         assertEquals(6, sc.add("//;;;\n1;;;2;;;3"));
     }
+
+    @Test
+    public void sumOfOddIndices() {
+        assertEquals(2, sc.add("0//1,2,3"));
+        assertEquals(2, sc.add("0//1,2,3"));
+    }
+
+    @Test
+    public void sumOfEvenIndices() {
+        assertEquals(2, sc.add("0//1,2,3"));
+        assertEquals(2, sc.add("0//1,2,3"));
+    }
 }

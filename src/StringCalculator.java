@@ -4,12 +4,25 @@ public class StringCalculator {
         int sum = 0;
         String negative_String = "";
         String_value = String_value.replaceAll(" ", "");
-
-        // Custom delimeter
         int delimiter_Index = String_value.indexOf("//");
         int String_Index = String_value.indexOf("\n");
 
-        if (delimiter_Index != -1) {
+        if (String_value.startsWith("0//") || String_value.startsWith("1//")) {
+            int index = 0;
+            if (String_value.startsWith("1")) {
+                index = 0;
+            } else
+                index = 1;
+            String subString = String_value.substring(3);
+            String[] s = subString.split(",");
+
+            for (int i = index; i < s.length; i += 2) {
+                sum += Integer.parseInt(s[i]);
+            }
+            return sum;
+        }
+        // Hanling Delimiers
+        else if (delimiter_Index != -1) {
             String delimiter = String_value.substring(delimiter_Index + 2, String_Index);
             String_value = String_value.substring(String_Index + 1);
             String[] arr1 = String_value.split(delimiter);
@@ -38,6 +51,7 @@ public class StringCalculator {
                     sum += current;
                 }
             }
+
             if (negative_String != "") {
                 throw new RuntimeException("Negatives not allowed -> " + negative_String);
             }
