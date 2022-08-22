@@ -72,12 +72,13 @@ public class StringCalculatorShould {
     @Test
     public void sumOfOddIndices() {
         assertEquals(2, sc.add("0//1,2,3"));
-        assertEquals(2, sc.add("0//1,2,3"));
+        assertEquals(4, sc.add("0//0,1,5,3"));
     }
 
     @Test
     public void sumOfEvenIndices() {
-        assertEquals(2, sc.add("0//1,2,3"));
-        assertEquals(2, sc.add("0//1,2,3"));
+        assertEquals(4, sc.add("1//1,2,3"));
+        assertEquals(6, sc.add("1//5,3,1,7"));
     }
+
 }

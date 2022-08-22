@@ -24,7 +24,7 @@ public class StringCalculator {
                 index = 0;
             } else
                 index = 1;
-            String subString = getSubString(String_value);
+            String subString = String_value.substring(3);
             String[] s = subString.split(",");
 
             for (int i = index; i < s.length; i += 2) {
