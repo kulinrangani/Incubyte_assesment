@@ -1,11 +1,22 @@
 public class StringCalculator {
 
+    public String getDelimeter(String s) {
+        int delimiter_Index = s.indexOf("//");
+        int String_Index = s.indexOf("\n");
+        String delimiter = s.substring(delimiter_Index + 2, String_Index);
+        return delimiter;
+    }
+
+    public String getSubString(String s) {
+        int String_Index = s.indexOf("\n");
+        String String_value = s.substring(String_Index + 1);
+        return String_value;
+    }
+
     public int add(String String_value) {
         int sum = 0;
         String negative_String = "";
         String_value = String_value.replaceAll(" ", "");
-        int delimiter_Index = String_value.indexOf("//");
-        int String_Index = String_value.indexOf("\n");
 
         if (String_value.startsWith("0//") || String_value.startsWith("1//")) {
             int index = 0;
@@ -13,7 +24,7 @@ public class StringCalculator {
                 index = 0;
             } else
                 index = 1;
-            String subString = String_value.substring(3);
+            String subString = getSubString(String_value);
             String[] s = subString.split(",");
 
             for (int i = index; i < s.length; i += 2) {
@@ -22,11 +33,11 @@ public class StringCalculator {
             return sum;
         }
         // Hanling Delimiers
-        else if (delimiter_Index != -1) {
-            String delimiter = String_value.substring(delimiter_Index + 2, String_Index);
-            String_value = String_value.substring(String_Index + 1);
-            String[] arr1 = String_value.split(delimiter);
-            for (String n : arr1) {
+        else if (String_value.startsWith("//")) {
+            String delimiter = getDelimeter(String_value);
+            String_value = getSubString(String_value);
+            String[] arr = String_value.split(delimiter);
+            for (String n : arr) {
                 Integer current = Integer.parseInt(n);
                 sum += current;
             }
